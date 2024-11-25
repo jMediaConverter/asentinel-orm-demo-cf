@@ -1,10 +1,10 @@
-package com.asentinel.orm.demo.asentinel_orm_demo_cf;
+package com.asentinel.orm.demo.cf;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class AsentinelOrmDemoCfApplicationTests {
+class DemoCfApplicationTests {
 
 	@Test
 	void contextLoads() {
