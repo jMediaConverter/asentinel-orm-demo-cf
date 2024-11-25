@@ -1,9 +1,5 @@
 package com.asentinel.orm.demo.cf.domain;
 
-import static java.util.Collections.emptyList;
-
-import java.util.List;
-
 import com.asentinel.common.orm.FetchType;
 import com.asentinel.common.orm.RelationType;
 import com.asentinel.common.orm.mappers.Child;
@@ -11,21 +7,22 @@ import com.asentinel.common.orm.mappers.Column;
 import com.asentinel.common.orm.mappers.PkColumn;
 import com.asentinel.common.orm.mappers.Table;
 
+import java.util.Collections;
+import java.util.List;
+
 @Table("CarManufacturers")
 public class CarManufacturer {
 	
-	public static final String COL_NAME = "name";
-
 	@PkColumn("id")
 	private int id;
 	
-	@Column(COL_NAME)
+	@Column("name")
 	private String name;
 	
 	@Child(parentRelationType = RelationType.MANY_TO_ONE, 
 			fkName = CarModel.COL_CAR_MANUFACTURER, 
 			fetchType = FetchType.LAZY)
-	private List<CarModel> models = emptyList();
+	private List<CarModel> models = Collections.emptyList();
 	
 	
 	// ORM constructor
@@ -63,6 +60,7 @@ public class CarManufacturer {
 	
 	@Override
 	public String toString() {
-		return "CarManufacturer [id=" + id + ", name=" + name + "]";
+		return "CarManufacturer [id=" + id +
+					", name=" + name + "]";
 	}
 }

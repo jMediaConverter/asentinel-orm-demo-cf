@@ -9,17 +9,15 @@ import com.asentinel.common.orm.mappers.Table;
 @Table("CarModels")
 public class CarModel {
 	
-	public static final String COL_NAME = "name";
-	public static final String COL_TYPE = "type";
 	public static final String COL_CAR_MANUFACTURER = "CarManufacturer";
 	
 	@PkColumn("id")
 	private int id;
 	
-	@Column(COL_NAME)
+	@Column("name")
 	private String name;
 	
-	@Column(COL_TYPE)
+	@Column("type")
 	private CarType type;
 	
 	@Child(fkName = COL_CAR_MANUFACTURER, fetchType = FetchType.LAZY)
@@ -70,8 +68,10 @@ public class CarModel {
 
 	@Override
 	public String toString() {
-		return "CarModel [id=" + id + ", name=" + name + ", type=" + type + ", carManufacturer=" + carManufacturer
+		return "CarModel [id=" + id +
+				", name=" + name +
+				", type=" + type +
+				", carManufacturer=" + carManufacturer
 				+ "]";
 	}
-	
 }

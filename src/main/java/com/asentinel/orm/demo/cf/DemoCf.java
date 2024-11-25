@@ -77,40 +77,16 @@ public class DemoCf {
 
     @Bean
     public DefaultSqlBuilderFactory sqlBuilderFactory(@Lazy EntityDescriptorTreeRepository entityDescriptorTreeRepository,
-                                                      SqlFactory sqlFactory, SqlQuery sqlQuery) {
+                                                      SqlFactory sqlFactory,
+													  SqlQuery sqlQuery) {
         DefaultSqlBuilderFactory sqlBuilderFactory = new DefaultSqlBuilderFactory(sqlFactory, sqlQuery);
         sqlBuilderFactory.setEntityDescriptorTreeRepository(entityDescriptorTreeRepository);
         return sqlBuilderFactory;
     }
 
     @Bean
-    public OrmOperations orm(JdbcFlavor jdbcFlavor, SqlQuery sqlQuery,
-                             SqlBuilderFactory sqlBuilderFactory) {
+    public OrmOperations orm(SqlBuilderFactory sqlBuilderFactory,
+							 JdbcFlavor jdbcFlavor, SqlQuery sqlQuery) {
         return new OrmTemplate(sqlBuilderFactory, new SimpleUpdater(jdbcFlavor, sqlQuery));
-    }
-
-
-    private static class ColumnInfo {
-		private final String name;
-    	private final String type;
-    	
-		public ColumnInfo(String name, String type) {
-			this.name = name;
-			this.type = type;
-		}
-
-		public String getName() {
-			return name;
-		}
-
-		public String getType() {
-			return type;
-		}
-		
-    	@Override
-		public String toString() {
-			return "ColumnInfo [name=" + name + ", type=" + type + "]";
-		}
-
     }
 }
