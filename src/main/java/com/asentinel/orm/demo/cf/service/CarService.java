@@ -39,7 +39,7 @@ public class CarService {
     public CarManufacturer findManufacturerByName(String name, List<DynamicColumn> attributes) {
         return orm.newSqlBuilder(CustomFieldsCarManufacturer.class)
                 .select(
-                        AutoEagerLoader.forPath(com.asentinel.orm.demo.cf.domain.CarManufacturer.class, CarModel.class),
+                        AutoEagerLoader.forPath(CarManufacturer.class, CarModel.class),
                         new DynamicColumnsEntityNodeCallback<>(
                                 new DefaultObjectFactory<>(CustomFieldsCarManufacturer.class),
                                 attributes
