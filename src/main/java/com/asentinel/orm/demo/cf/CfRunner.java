@@ -49,7 +49,7 @@ public class CfRunner implements CommandLineRunner {
 					break;
 				}
 
-				carService.addManufacturerField(name, type);
+				carService.addManufacturerAttribute(name, type);
 
 				dynamicColumns.add(new DefaultDynamicColumn(name, columnType(type)));
 			}

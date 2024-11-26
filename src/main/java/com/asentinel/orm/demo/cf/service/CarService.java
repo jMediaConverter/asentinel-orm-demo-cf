@@ -24,7 +24,7 @@ public class CarService {
     }
 
     @Transactional
-    public void addManufacturerField(String name, String type) {
+    public void addManufacturerAttribute(String name, String type) {
         orm.getSqlQuery()
                 .update("alter table CarManufacturers add column " +  name + " " + type);
     }
